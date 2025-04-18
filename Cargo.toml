@@ -1,3 +1,6 @@
+[[bin]]
+name = "eec-tag"
+path = "src/main.rs"
 [package]
 name = "env-exec-tag"
 version = "0.1.0"
