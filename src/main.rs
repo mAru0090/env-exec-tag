@@ -12,6 +12,7 @@ use serde::{Deserialize, Serialize}; // bincode用にSerialize/Deserializeが必
 // ====================
 #[derive(Serialize, Deserialize, Debug)]
 struct TagData {
+    config_file: PathBuf,
     program: PathBuf,
     args: Vec<String>,
 }
@@ -25,6 +26,8 @@ struct Cli {
     #[arg(long, short)]
     tag_name: String,
 
+    #[arg(long)]
+    config_file: PathBuf,
     /// 実行対象のプログラムパス
     #[arg(long)]
     program: PathBuf,
@@ -51,6 +54,7 @@ fn main() -> Result<()> {
 
     // タグデータを構造体に格納
     let tag_data = TagData {
+        config_file: cli.config_file,
         program: cli.program,
         args: cli.program_args,
     };
